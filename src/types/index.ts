@@ -273,6 +273,6 @@ export interface SyncResponse {
   domains: any;
   policies: any[];
   sends: any[];
-  userDecryption: any | null;
+  UserDecryptionOptions: UserDecryptionOptions | null;
   object: string;
 }

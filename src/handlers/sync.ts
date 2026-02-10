@@ -112,16 +112,18 @@ export async function handleSync(request: Request, env: Env, userId: string): Pr
     },
     policies: [],
     sends: [],
-    userDecryption: {
-      masterPasswordUnlock: {
-        salt: user.email,
-        kdf: {
-          kdfType: user.kdfType,
-          iterations: user.kdfIterations,
-          memory: user.kdfMemory || null,
-          parallelism: user.kdfParallelism || null,
+    UserDecryptionOptions: {
+      HasMasterPassword: true,
+      Object: 'userDecryptionOptions',
+      MasterPasswordUnlock: {
+        Kdf: {
+          KdfType: user.kdfType,
+          Iterations: user.kdfIterations,
+          Memory: user.kdfMemory || null,
+          Parallelism: user.kdfParallelism || null,
         },
-        masterKeyEncryptedUserKey: user.key,
+        MasterKeyEncryptedUserKey: user.key,
+        Salt: user.email,
       },
     },
     object: 'sync',
